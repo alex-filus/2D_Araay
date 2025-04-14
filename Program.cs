@@ -9,6 +9,8 @@ namespace _2D_Arrays
         static void Main(string[] args)
         {
             int[,] grid = new int[1, 1];
+            int width = 0;
+            
 
             Console.WriteLine("How many rows do you want to enter?");
             int rows = Convert.ToInt32(Console.ReadLine());
@@ -18,31 +20,37 @@ namespace _2D_Arrays
 
             grid = new int[rows, columns];
 
-            //for (int i = 0; i < rows; i++)
-            //{   
-            //    for (int j = 0; j < columns; j++)
-            //    {
-            //        Console.Write("\u2665"+ " ", Color.Red);
-            //    }
-            //    Console.WriteLine();
-            //}
+
+            width = 2 * columns +1;
+            string border = new string('*', width);
+
+        
+            Console.WriteLine(border, Color.Gold);
 
             for (int i = 0; i < rows; i++)
 
             {
-                if (i % 2 == 0)
-                {
-                    for (int j = 0; j < columns; j++)
-                    {
-                        if (j % 2 != 0)
-                        {                            
 
-                                Console.Write("\u2665" + " ", Color.Red);
-                        }
+                for (int j = 0; j < columns; j++)
+                {
+                    if (j % 2 != 0)
+                    {
+
+                        Console.Write("*" + "\u2665", Color.Red);
+
                     }
+                    else
+                    {
+
+                        Console.Write("*" + "\u2665", Color.Gold);
+
+                    }
+
                 }
-                Console.WriteLine();
+                Console.WriteLine("*", Color.Gold);
+                
             }
+            Console.WriteLine(border, Color.Gold);
 
         }
     }
