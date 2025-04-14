@@ -10,7 +10,8 @@ namespace _2D_Arrays
         {
             int[,] grid = new int[1, 1];
             int width = 0;
-            
+            const string HEARTS = "\u2665";
+            const string FACES = "\u263A";
 
             Console.WriteLine("How many rows do you want to enter?");
             int rows = Convert.ToInt32(Console.ReadLine());
@@ -24,8 +25,34 @@ namespace _2D_Arrays
             width = 2 * columns +1;
             string border = new string('*', width);
 
-        
-            Console.WriteLine(border, Color.Gold);
+
+            Console.WriteLine("What symbol you'd like to use: hearts or faces?");
+            Console.WriteLine("1. Hearts");
+            Console.WriteLine("2. Faces");
+            string choice = Console.ReadLine();
+            string symbol = "";
+
+            while (symbol == "")
+            {
+                if (choice.ToLower() == "hearts")
+                {
+                    symbol = HEARTS;
+                }
+
+                if (choice.ToLower() == "faces")
+                {
+                    symbol = FACES;
+                }
+                else
+                {
+                    Console.WriteLine(@"Invalid. Please enter ""hearts"" or ""faces"".");
+                    choice = Console.ReadLine();
+
+                }
+
+            }
+
+                Console.WriteLine(border, Color.Gold);
 
             for (int i = 0; i < rows; i++)
 
@@ -36,13 +63,14 @@ namespace _2D_Arrays
                     if (j % 2 != 0)
                     {
 
-                        Console.Write("*" + "\u2665", Color.Red);
+                        Console.Write("*" + symbol, Color.Red);
+                        
 
                     }
                     else
                     {
 
-                        Console.Write("*" + "\u2665", Color.Gold);
+                        Console.Write("*" + symbol, Color.Gold);
 
                     }
 
