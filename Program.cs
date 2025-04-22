@@ -109,28 +109,42 @@ namespace _2D_Arrays
                 {
                     Console.Write("X----", Color.Green);
                     
+
                 }
                 Console.Write("X", Color.Green);
                 Console.Write("\n");
 
                 for (int i = 0; i < rows; i++)
+                    {
+                    if (i > 0)
+                    {
 
-                {
+                        
+                            for (int j = 0; j < columns; j++)
+                            {
+                                Console.Write(" ----", Color.Red);
 
+                            }
+                            Console.WriteLine();
+                        }
                     for (int j = 0; j < columns; j++)
                     {
                         
 
-                            Console.Write("| " + " 1 ", Color.Red);
-                    
+                            Console.Write("| " + " "+ j + " ", Color.Red);
+                        
+                   
 
                     }
+
                     Console.WriteLine("|", Color.Red);
+
 
                 }
 
                 for (int j = 0; j < columns; j++)
                 {
+                    
                     Console.Write("X----", Color.Green);
 
                 }
