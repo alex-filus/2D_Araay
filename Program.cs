@@ -17,8 +17,10 @@ namespace _2D_Arrays
             const string SYMBOL_CHOICE_HEARTS = "hearts";
             const string SYMBOL_CHOICE_FACES = "faces";
             const string INVALID_MESSAGE = @"Invalid. Please enter ""hearts"" or ""faces"".";
+            int startingNumber = 1;
             int rows = 0;
             int columns = 0;
+
 
             Console.WriteLine("Welcome! \nWhat modes would you like to run?\nPress \"1\" for symbols or \"2\" for number.");
             string modeChoice = Console.ReadLine();
@@ -130,12 +132,14 @@ namespace _2D_Arrays
                         }
                         Console.WriteLine();
                     }
+
+
+
                     for (int j = 0; j < columns; j++)
                     {
-
-
-                        Console.Write("| " + " " + j + " ", Color.Red);
-
+                        string formattedNumber = $"{startingNumber,3}";
+                        Console.Write("|" + formattedNumber + " ", Color.Red);
+                        startingNumber++;
 
 
                     }
