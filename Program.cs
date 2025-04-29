@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Common;
 using System.Drawing;
 using Console = Colorful.Console;
 
@@ -16,8 +17,12 @@ namespace _2D_Arrays
             const string NUMBERS_MODE = "2";
             const string SYMBOL_CHOICE_HEARTS = "hearts";
             const string SYMBOL_CHOICE_FACES = "faces";
+            const string NUMBER_ORDER_ASCENDING = "ascending";
+            const string NUMBER_ORDER_DESCENDING = "descending";
             const string INVALID_MESSAGE = @"Invalid. Please enter ""hearts"" or ""faces"".";
+            const string INVALID_MESSAGE_NUMBER_ORDER = @"Invalid. Please enter ""ascending"" or ""descending"".";
             int startingNumber = 1;
+            int startingNumberDescending = 0;
             int rows = 0;
             int columns = 0;
 
@@ -109,70 +114,142 @@ namespace _2D_Arrays
 
             if (modeChoice == NUMBERS_MODE)
             {
+                Console.WriteLine("What order would you like the numbers to be in: ascending or descending?");
+                Console.WriteLine("1. Ascending");
+                Console.WriteLine("2. Descending");
+                string orderChoice = Console.ReadLine();
 
-                for (int j = 0; j < columns; j++)
+                while (orderChoice.ToLower() != NUMBER_ORDER_ASCENDING && orderChoice.ToLower() != NUMBER_ORDER_DESCENDING)
                 {
-                    Console.Write("X----", Color.Green);
-
-
+                    Console.WriteLine(INVALID_MESSAGE_NUMBER_ORDER);
+                    orderChoice = Console.ReadLine();
                 }
-                Console.Write("X", Color.Green);
-                Console.Write("\n");
 
-                for (int i = 0; i < rows; i++)
+                if (orderChoice.ToLower() == NUMBER_ORDER_ASCENDING)
                 {
-                    if (i > 0)
+                    for (int j = 0; j < columns; j++)
                     {
+                        Console.Write("X----", Color.Green);
+
+
+                    }
+                    Console.Write("X", Color.Green);
+                    Console.Write("\n");
+
+                    for (int i = 0; i < rows; i++)
+                    {
+                        if (i > 0)
+                        {
+
+
+                            for (int j = 0; j < columns; j++)
+                            {
+                                Console.Write(" ----", Color.Red);
+
+                            }
+                            Console.WriteLine();
+                        }
+
 
 
                         for (int j = 0; j < columns; j++)
                         {
-                            Console.Write(" ----", Color.Red);
+
+                            string formattedNumber = $"{startingNumber,3}";
+                            Console.Write("|" + formattedNumber + " ", Color.Red);
+                            startingNumber++;
+
 
                         }
-                        Console.WriteLine();
+
+                        Console.WriteLine("|", Color.Red);
+
+
                     }
-
-
 
                     for (int j = 0; j < columns; j++)
                     {
-                        string formattedNumber = $"{startingNumber,3}";
-                        Console.Write("|" + formattedNumber + " ", Color.Red);
-                        startingNumber++;
+
+                        Console.Write("X----", Color.Green);
+
+                    }
+                    Console.Write("X", Color.Green);
+
+
+                }
+
+                if (orderChoice.ToLower() == NUMBER_ORDER_DESCENDING)
+                {
+                    startingNumberDescending = columns * rows;
+
+                    for (int j = 0; j < columns; j++)
+                    {
+                        Console.Write("X----", Color.Green);
+
+
+                    }
+                    Console.Write("X", Color.Green);
+                    Console.Write("\n");
+
+                    for (int i = 0; i < rows; i++)
+                    {
+                        if (i > 0)
+                        {
+
+
+                            for (int j = 0; j < columns; j++)
+                            {
+                                Console.Write(" ----", Color.Red);
+
+                            }
+                            Console.WriteLine();
+                        }
+
+                        
+
+                        for (int j = 0; j < columns; j++)
+                        {                       
+                            string formattedNumber = $"{startingNumberDescending,3}";
+                            Console.Write("|" + formattedNumber + " ", Color.Red);
+                            startingNumberDescending--;
+
+                        }
+
+                        Console.WriteLine("|", Color.Red);
 
 
                     }
 
-                    Console.WriteLine("|", Color.Red);
+                    for (int j = 0; j < columns; j++)
+                    {
+
+                        Console.Write("X----", Color.Green);
+
+                    }
+                    Console.Write("X", Color.Green);
+
 
 
                 }
-
-                for (int j = 0; j < columns; j++)
-                {
-
-                    Console.Write("X----", Color.Green);
-
-                }
-                Console.Write("X", Color.Green);
-
-
-
 
 
 
             }
 
 
+
+
         }
 
 
-
-
-
-
-
-
     }
+
+
+
+
+
+
+
+
 }
+
